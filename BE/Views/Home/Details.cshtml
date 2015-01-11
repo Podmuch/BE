@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Details";
+    BE.Models.Produkt produkt = (ViewBag.WybranyProdukt as BE.Models.Produkt);
+}
+<style>
+    .tablesize {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .detailsheader {
+        background-color: white;
+    }
+    .headertekst {
+        font-size: 20px;
+        margin-left: 3%;
+    }
+</style>
+<script>
+    function WyslijZamowienie() {
+        var rozmiar = document.getElementById("Select1").options[document.getElementById("Select1").selectedIndex].value;
+        window.location.href = "../../Home/AddKoszyk/" +@((produkt!=null)?produkt.ID:-1) +"/" + rozmiar;
+    }
+</script>
+@{
+    if (produkt != null)
+    {
+        <div class="detailsheader">
+            <p class="headertekst"><b>@produkt.Nazwa</b></p>
+        </div>
+    <div class="tablesize">
+        <table>
+            <tr>
+                <td>
+                    <img src="~/@produkt.SciezkaDoZdjecia" />
+                </td>
+                <td>
+                    <p style="font-size:15px"><b>@produkt.Nazwa</b></p>
+                    <br/>
+                    <p style="font-size:15px"><b>Cena: @produkt.Cena zł</b></p>
+                    <p style="font-size:15px"><b>Kolor: @produkt.Kolor</b></p>
+                    <p style="font-size:15px"><b>Marka: @produkt.Marka</b></p>
+                    <p style="font-size:15px"><b>Material: @produkt.Material</b></p>
+                    <p style="font-size:15px"><b>Rozmiar:</b> <select id="Select1">
+                    @foreach (String rozmiar in produkt.DostepneRozmiary)
+                    {
+                        <option>@rozmiar</option>
+                    }
+                    </select></p>
+                    <p style="font-size:15px">@produkt.Opis</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="WyslijZamowienie()">Dodaj do Koszyka</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    }
+}

@@ -1,0 +1,61 @@
+﻿<style>
+    .tablesize {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .detailsheader {
+        background-color: white;
+    }
+
+    .headertekst {
+        font-size: 20px;
+        margin-left: 3%;
+    }
+</style>
+<script>
+    function Zaloguj() {
+        var nick = document.getElementById("nick").value;
+        var haslo = document.getElementById("haslo").value;
+        if (nick.length > 0 && haslo.length > 0) {
+            window.location.href = "../../../Home/WeryfikujLogowanie/" + nick + "/" + haslo;
+        }
+        else {
+            alert("puste pola");
+        }
+    }
+</script>
+@{
+    <div class="detailsheader">
+        <p class="headertekst"><b>Logowanie</b></p>
+    </div>
+    <div class="tablesize">
+        <table>
+            <tr>
+                <td>
+                    @if(((BE.Models.Uzytkownik)ViewBag.Uzytkownik)==null)
+                    { 
+                        if ((bool)ViewBag.Blad)
+                        {
+                            <p style="font-size:15px"><b>Bledne dane </b></p>
+                        }
+                        <p style="font-size:15px"><b>Nick: <input id="nick" type="text" name="fname"> </b></p>
+                        <p style="font-size:15px"><b>Haslo: <input id="haslo" type="password" name="fname"> </b></p>
+                    }
+                    else
+                    {
+                        <p style="font-size:15px"><b>Uzytkownik Zalogowany </b></p>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @if ((BE.Models.Uzytkownik)ViewBag.Uzytkownik == null)
+                    {
+                        <button type="button" onclick="Zaloguj()">Zaloguj</button>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+}

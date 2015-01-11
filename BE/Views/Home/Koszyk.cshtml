@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Koszyk";
+}
+<script>
+    function UsunZKoszyka(id, rozmiar) {
+        window.location.href = "../../Home/UsunKoszyk/" +id+"/" + rozmiar;
+    }
+    function Zrealizuj() {
+        window.location.href = "../../Home/ZrealizujKoszyk";
+    }
+</script>
+<table>
+    @{
+        System.Collections.Generic.List<KeyValuePair<BE.Models.Produkt, string>> koszyk = (System.Collections.Generic.List<KeyValuePair<BE.Models.Produkt, string>>)ViewBag.ZawartoscKoszyka;
+        for (int i = 0; i < 3; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 3; j++)
+                {
+                    if (i * 3 + j < koszyk.Count)
+                    {
+                        <td>
+                            <table>
+                                <tr><td><img src="~/@koszyk[i * 3 + j].Key.SciezkaDoZdjecia" /></td></tr>
+                                <tr><td><p style="font-size:10px">@koszyk[i * 3 + j].Key.Nazwa<br />
+                                    @koszyk[i * 3 + j].Key.Cena zł<br />
+                                    Rozmiar: @koszyk[i * 3 + j].Value</p>
+                                        <button type="button" onclick="UsunZKoszyka(@koszyk[i * 3 + j].Key.ID, @koszyk[i * 3 + j].Value)">Usun z Koszyka</button>
+                                </td></tr>
+                            </table>
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    }
+    <tr><td>
+        @if(koszyk!=null&&koszyk.Count>0)
+        { 
+            <button type="button" onclick="Zrealizuj()">Zrealizuj Zamówienie</button>
+        }
+    </td></tr>
+    
+</table>

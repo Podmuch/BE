@@ -15,8 +15,22 @@ namespace BE
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{rozmiar}/{dom}/{kod}/{ulica}/{miasto}/{nazwisko}/{imie}/{nick}/{haslo}",
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    id = UrlParameter.Optional,
+                    rozmiar = UrlParameter.Optional,
+                    dom = UrlParameter.Optional,
+                    kod = UrlParameter.Optional,
+                    ulica = UrlParameter.Optional,
+                    miasto = UrlParameter.Optional,
+                    nazwisko = UrlParameter.Optional,
+                    imie = UrlParameter.Optional,
+                    nick = UrlParameter.Optional,
+                    haslo = UrlParameter.Optional
+                }
             );
         }
     }

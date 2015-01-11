@@ -1,0 +1,75 @@
+﻿@{
+    System.Collections.Generic.List<KeyValuePair<BE.Models.Produkt, string>> koszyk = (System.Collections.Generic.List<KeyValuePair<BE.Models.Produkt, string>>)ViewBag.ZawartoscKoszyka;
+    BE.Models.Uzytkownik uzytkownik = (BE.Models.Uzytkownik)ViewBag.Uzytkownik;
+}
+<style>
+    .tablesize {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .detailsheader {
+        background-color: white;
+    }
+
+    .headertekst {
+        font-size: 20px;
+        margin-left: 3%;
+    }
+</style>
+<script>
+    function WyslijZamowienie() {
+        var imie = document.getElementById("imie").value;
+        var nazwisko = document.getElementById("nazwisko").value;
+        var miasto = document.getElementById("miasto").value;
+        var ulica = document.getElementById("ulica").value;
+        var kod = document.getElementById("kod").value;
+        var dom = document.getElementById("dom").value;
+        var mieszkanie = document.getElementById("mieszkanie").value;
+        var telefon = document.getElementById("telefon").value;
+        var czyKod = /^\d{2}-\d{3}$/;
+        var czyTelefon = /^\d{9}$/;
+
+        if (czyTelefon.test(telefon) && czyKod.test(kod) && imie.length > 0 && nazwisko.length > 0
+            && miasto.length > 0 && ulica.length > 0 && kod.length > 0 && dom.length > 0)
+        {
+            window.location.href = "../../../Home/PrzeslijZamowienie/" + ((mieszkanie.length > 0) ? mieszkanie : -1) + "/" + telefon + "/" + dom + "/"
+                                + kod + "/" + ulica + "/" + miasto + "/" + nazwisko + "/" + imie;
+        }
+        else
+        {
+            alert("sprawdz dane");
+        }
+    }
+</script>
+@{
+        <div class="detailsheader">
+            <p class="headertekst"><b>Zamowienie</b></p>
+        </div>
+        <div class="tablesize">
+            <table>
+                <tr>
+                    <td>
+                        <p style="font-size:15px"><b>Kwota: @ViewBag.Koszyk zł</b></p>
+                        @if(uzytkownik!=null)
+                        {
+                            <p style="font-size:15px"><b>Uzytkownik: @uzytkownik.Nick</b></p>
+                        }
+                        <p style="font-size:15px"><b>Imie: <input id="imie" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.Imie:"")"> </b></p>
+                        <p style="font-size:15px"><b>Nazwisko: <input id="nazwisko" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.Nazwisko:"")"> </b></p>
+                        <p style="font-size:15px"><b>Miasto: <input id="miasto" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.Miasto:"")"> </b></p>
+                        <p style="font-size:15px"><b>Ulica: <input id="ulica" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.Ulica:"")"> </b></p>
+                        <p style="font-size:15px"><b>Kod Pocztowy: <input id="kod" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.Kod_Pocztowy:"")"> </b></p>
+                        <p style="font-size:15px"><b>nr domu: <input id="dom" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.nr_domu.ToString():"")"> </b></p>
+                        <p style="font-size:15px"><b>nr mieszkania: <input id="mieszkanie" type="text" name="fname" value="@((uzytkownik != null) ? uzytkownik.nr_mieszkania.ToString() : "")"> </b></p>
+                        <p style="font-size:15px"><b>Telefon: <input id="telefon" type="text" name="fname" value="@((uzytkownik!=null)?uzytkownik.Telefon:"")"> </b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="WyslijZamowienie()">Zatwierdz</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+}

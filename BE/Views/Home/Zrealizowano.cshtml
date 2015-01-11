@@ -1,0 +1,44 @@
+﻿<table>
+    <tr>
+        <td>
+            <p style="font-size:15px"><b>Kupione Rzeczy</b></p>
+        </td>
+    </tr>
+    @{
+        System.Collections.Generic.List<KeyValuePair<BE.Models.Produkt, string>> koszyk = (System.Collections.Generic.List<KeyValuePair<BE.Models.Produkt, string>>)ViewBag.ZawartoscKoszyka;
+        for (int i = 0; i < 3; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 3; j++)
+                {
+                    if (i * 3 + j < koszyk.Count)
+                    {
+                        <td>
+                            <table>
+                                <tr><td><img src="~/@koszyk[i * 3 + j].Key.SciezkaDoZdjecia" /></td></tr>
+                                <tr>
+                                    <td>
+                                        <p style="font-size:10px">
+                                            @koszyk[i * 3 + j].Key.Nazwa<br />
+                                            @koszyk[i * 3 + j].Key.Cena zł<br />
+                                            Rozmiar: @koszyk[i * 3 + j].Value
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    }
+    <tr>
+        <td>
+            <p style="font-size:15px"><b>Numer Zamowienia: @ViewBag.numerzamowienia</b></p>
+            <p style="font-size:15px"><b>Numer konta bankowego: 22 2222 2222 2222 2222 2222 2222</b></p>
+            <p style="font-size:15px"><b>Adres:</b></p>
+            <p style="font-size:15px"><b>ul. Przykladowa droga</b></p>
+            <p style="font-size:15px"><b>Przykladowe Miasto, 00-000</b></p>
+        </td>
+    </tr>
+</table>

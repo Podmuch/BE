@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,10 +168,16 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Produkt.cs" />
+    <Compile Include="Models\Uzytkownik.cs" />
+    <Compile Include="Models\Zamowienie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\czapka.png" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\tlo1.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -226,6 +233,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Hello\Index.cshtml" />
+    <Content Include="Views\Hello\Welcome.cshtml" />
+    <Content Include="Views\Home\Koszyk.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\AddKoszyk.cshtml" />
+    <Content Include="Views\Home\UsunKoszyk.cshtml" />
+    <Content Include="Views\Home\ZrealizujKoszyk.cshtml" />
+    <Content Include="Views\Home\Zrealizowano.cshtml" />
+    <Content Include="Views\Home\PrzeslijZamowienie.cshtml" />
+    <Content Include="Views\Home\Zaloguj.cshtml" />
+    <Content Include="Views\Home\WeryfikujLogowanie.cshtml" />
+    <Content Include="Views\Home\Wyloguj.cshtml" />
+    <Content Include="Views\Home\Zarejestruj.cshtml" />
+    <Content Include="Views\Home\PrzeslijRejestracje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
