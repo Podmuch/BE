@@ -17,7 +17,9 @@ namespace BE.Controllers
             if (Session["produkty"] == null)
             {
                 produkty = new List<Produkt>();
-                produkty.Add(new Produkt(1, 1, "czapka LAL", new List<string>(new string[] { "1", "2", "3", "4", "5", "6" }), "fiolet", "new era", 50.0f, "welna", "Content/czapka.png", "czapki", "Czapka full-cap drużyny Los Angeles Lakers. Niezbędna dla każdego fana koszykówki."));
+                produkty.Add(new Produkt(1, 1, "Czapka z Daszkiem Los Angeles Lakers", new List<string>(new string[] { "1", "2", "3", "4", "5", "6" }), "fiolet", "new era", 50.0f, "welna", "Content/czapka.png", "czapki", "Czapka full-cap drużyny Los Angeles Lakers. Niezbędna dla każdego fana koszykówki."));
+                produkty.Add(new Produkt(2, 2, "Zimowa Czapka Los Angeles Lakers", new List<string>(new string[] { "2", "3", "4", "5" }), "fiolet, biały, złoty", "M&N", 60.0f, "akryl", "Content/zimowka.png", "czapki", "Ciepła Zimowa Czapka drużyny Los Angeles Lakers, w genialnych kolorach. Niezbędna dla każdego fana koszykówki."));
+                produkty.Add(new Produkt(3, 3, "Figurka Stephen Curry", new List<string>(new string[] { "Uniwersalny"}), "niebieski", "", 30.0f, "", "Content/maskotka.png", "ozdoby", "Figurka Stephen Curry z drużyny Golden State Warriors. Zabierz swojego ulubionego gracza do domu za niewielką cenę."));
                 Session["produkty"] = produkty;
             }
             else
